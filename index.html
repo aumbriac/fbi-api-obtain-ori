@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="Free, quick law enforcement originating agency identifier (ORI) lookup.">
+   <meta name="author" content="Anthony Umbriac">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body id="top">
+   <header>
+      <nav class="collapse bg-dark" id="navbarHeader">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-8 col-md-7 py-4">
+                  <h4 class="text-white">About</h4>
+                  <p class="text-muted">This web application demonstrates how to utilize a government API to return JSON data within a user-friendly interface. This example was coded using <a
+                        href="https://jquery.com">jQuery</a> and <a href="https://getbootstrap.com">Bootstrap</a>.</p>
+               </div>
+               <div class="col-sm-4 offset-md-1 py-4">
+                  <h4 class="text-white">Contact</h4>
+                  <ul class="list-unstyled">
+                     <li><a href="https://anthonyumbriac.com" class="text-light">My Homepage</a></li>
+                     <li><a href="https://linkedin.com/in/anthonyumbriac" class="text-light">Connect on LinkedIn</a>
+                     </li>
+                     <li><a href="mailto:anthonyumbriac@gmail.com" class="text-light">Email Me</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </nav>
+      <nav class="navbar navbar-dark bg-dark shadow-lg">
+         <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+               <i id="icon" class="fas fa-eye"></i>&ensp;<span class="navHeader font-weight-light">Law Enforcement ORI Lookup</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+               aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+         </div>
+      </nav>
+   </header>
+   <main role="main">
+      <div class="small-container">
+         <small class="text-muted">Data Provided By The FBI</small>
+      </div>
+      <section class="jumbotron text-center">
+         <div class="container">
+            <h1 id="heading" class="jumbotron-heading">Law Enforcement Originating Agency Identifier (ORI) Lookup</h1>
+            <div id="loaderText">Accessing Records<span>.</span><span>.</span><span>.</span></div>
+            <p id="paragraph" class="lead text-muted">Select a state then click the '<span class="text-primary">Fetch
+                  Data</span>' button to access law enforcement agency ORIs in each state.</p>
+            <p>
+               <select id="state" class="form-control">
+                  <option value="" disabled selected>Select a state</option>
+                  <option value="AL">Alabama</option>
+                  <option value="AK">Alaska</option>
+                  <option value="AZ">Arizona</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="CA">California</option>
+                  <option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="DC">District Of Columbia</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="HI">Hawaii</option>
+                  <option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IN">Indiana</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="MT">Montana</option>
+                  <option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option>
+                  <option value="NH">New Hampshire</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="OH">Ohio</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option>
+                  <option value="PA">Pennsylvania</option>
+                  <option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="TX">Texas</option>
+                  <option value="UT">Utah</option>
+                  <option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option>
+                  <option value="WA">Washington</option>
+                  <option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option>
+                  <option value="WY">Wyoming</option>
+               </select>
+            </p>
+
+            <span class="lead text-primary"><i id="arrow" class="fas fa-angle-double-up"></i></span><button id="button"
+               class="btn btn-md" disabled="true">Select State Above</button>
+            <button id="reset" class="btn btn-secondary btn-md">Search Again</button>
+            <h5 id="status" class="mt-3"></h5>
+            <div class="container">
+               <div class="search-container">
+                  <div class="search mb-5">
+                     <span class="fa fa-search"></span>
+                     <input id="search" class="form-control" placeholder="Enter a keyword to filter results">
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         </div>
+         <img src="">
+         <div id="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+               <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+            </svg>
+         </div>
+      </section>
+
+      <section class="container">
+         <div class="results-container">
+            <h4 id="results"></h4>
+            <ol id="root"></ol>
+         </div>
+      </section>
+   </main>
+   <footer class="text-muted bg-light fixed-bottom">
+      <div class="container">
+         <p class="float-right">
+            <a class="font-weight-lighter d-inline-block js-scroll-trigger" href="#top">Back to top <i class="fas fa-arrow-alt-circle-up"></i></a>
+         </p>
+         <p class="font-weight-lighter">&copy; Anthony Umbriac</p>
+      </div>
+   </footer>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script src="https://kit.fontawesome.com/77115c99a1.js" SameSite="None"></script>
+   <script src="js/jquery.easing.js"></script>
+   <script src="js/index.js"></script>
+
+</html>
